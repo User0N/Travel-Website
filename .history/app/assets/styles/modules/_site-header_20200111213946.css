@@ -1,0 +1,9 @@
+.site-header {
+    position: absolute;
+    z-index: 2;
+    background-color: rgba($mainBlue, .5);
+
+    &__btn-container {
+        float: right;
+    }
+}
