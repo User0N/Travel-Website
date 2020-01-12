@@ -5,20 +5,8 @@ var gulp = require('gulp'),
     svg2png = require('gulp-svg2png');
 
 var config = {
-    shape: {
-        spacing: {
-            padding: 1
-        }
-    },
     mode: {
         css: {
-            variables: {
-                replaceSvgWithPng: function () {
-                    return function (sprite, render) {
-                        return render(sprite).split('.svg').join('.png');
-                    }
-                }
-            },
             sprite: 'sprite.svg',
             render: {
                 css: {
@@ -45,7 +33,7 @@ gulp.task('createPngCopy', ['createSprite'], function () {
         .pipe(gulp.dest('./app/temp/sprite/css'));
 });
 
-gulp.task('copySpriteGraphic', ['createPngCopy'], function () {
+gulp.task('copySpriteGraphic', ['createPng'], function () {
     return gulp.src('./app/temp/sprite/css/**/*.{svg,png}')
         .pipe(gulp.dest('./app/assets/images/sprites'));
 });
